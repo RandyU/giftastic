@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		button,
+		div,
+		form,
+		input {
+			margin: 12px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="container">
+
+		<div id="pets-view"></div>
+
+		<form id="pet-form">
+			<label for="pet-input">Add a Pet</label>
+			<input type="text" id="pet-input"><br>
+
+			<input id="add-pet" type="submit" value="Add a Pet">
+		</form>
+
+		<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+        <script type="text/javascript"></script>
+        <script>
+        var pets = ["German Sheppard", "Doberman Pinscher", "RottWiller", "Great Dane", "Pit bull", "Poodle"];
+
+        function renderButtons() {
+
+        $("#pets-view").empty();
+
+        for (var i = 0; i < pets.length; i++) {
+
+        // $("button").on("click", function() {
+      var pet = $(this).attr("data-name");
+      var queryURL = "http://api.giphy.com/v1/gifs/search?q=" +
+        pet + "&api_key=dc6zaTOxFJmzC&limit=10";
+
+        $.ajax({
+          url: queryURL,
+          method: "GET"
+        }).done(function(response) {
+        	
+          
+          // var results = response.data;
+          var petDiv = $("<div class='pet'>");
+
+
+        // function renderButtons() {
+
+        $("pets-view").empty();
+
+        // for (var i = 0; i < pets.length; i++) {
+           
+        var a = $("<button>");
+        a.addClass("pet");
+        a.attr("data-name", pets[i]);
+        a.text(pets[i]);
+        $("#pets-view").append(a);
+    })
+
+     $("#add-pet").on("click", function(event) {
+     	event.preventDefault();
+     
+     	var pet = $("#pet-input").val().trim();
+
+     	pets.push(pet);
+
+        function renderButtons();
+   
+     // $(document).on("click", ".pet", displayPetInfo);
+
+     // renderButtons();
+
+
+            // document.getElementById("pets-view").innerHTML = text;
+			
+          // }
+
+		</script>
+	</div>
+</body>
+</html>
